@@ -3,3 +3,8 @@ dist/
 .dev.vars
 .env
 .wrangler/
+.history/
+*.log
+*.bat
+*.sh
+*.ps1

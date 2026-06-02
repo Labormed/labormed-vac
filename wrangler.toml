@@ -1,6 +1,8 @@
 name = "labormed-vac"
 main = "src/index.ts"
 compatibility_date = "2024-12-01"
+account_id = "a8ce2608bda74d809930fdcec640b92c"
+routes = [{ pattern = "vacina.labormed.app", custom_domain = true }]
 
 # R2 bucket for static HTML
 [[r2_buckets]]
@@ -9,6 +11,3 @@ bucket_name = "labormed-vac-storage"
 
 [vars]
 ENVIRONMENT = "production"
-
-# Custom domain
-# routes = [{ pattern = "vacina.labormed.app", custom_domain = true }]
