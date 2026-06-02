@@ -1,0 +1,16 @@
+{
+  "name": "labormed-vac",
+  "version": "1.0.0",
+  "description": "Labormed Vacinas - Landing page on Cloudflare Workers",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "upload-html": "wrangler r2 object put labormed-vac-storage/index.html --file=static/index.html --content-type text/html --remote"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241230.0",
+    "typescript": "^5.7.0",
+    "wrangler": "^3.100.0"
+  }
+}

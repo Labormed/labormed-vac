@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Labormed Vacinas | Vacinação particular em Uberlândia</title>
+<meta name="description" content="Vacinação particular em Uberlândia para bebês, crianças, adultos e idosos. Atendimento na clínica ou domiciliar. Mais de 40 imunizantes aprovados pela Anvisa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul:#1e3a8a; --azul-escuro:#15296b; --azul-claro:#3b5fc9;
+    --azul-bg:#eef3fb; --azul-bg-suave:#f5f8fc;
+    --verde:#2e9367; --verde-escuro:#1f7350;
+    --texto:#1a2332; --texto-claro:#5a6478;
+    --branco:#ffffff; --bg:#ffffff; --borda:#e3e8f0;
+    --sombra-sm:0 2px 8px rgba(30,58,138,0.08);
+    --sombra-md:0 8px 24px rgba(30,58,138,0.12);
+    --sombra-lg:0 20px 50px rgba(30,58,138,0.15);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Manrope',sans-serif;color:var(--texto);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.02em;line-height:1.15;}
+  a{text-decoration:none;color:inherit;}
+  .container{max-width:1240px;margin:0 auto;padding:0 24px;}
+
+  .topbar{background:var(--branco);color:var(--texto);padding:10px 0;font-size:13px;border-bottom:1px solid var(--borda);}
+  .topbar-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .topbar-info{display:flex;gap:22px;flex-wrap:wrap;align-items:center;}
+  .topbar a:hover{color:var(--azul);}
+
+  header{background:var(--branco);padding:18px 0;position:sticky;top:0;z-index:100;box-shadow:0 1px 0 var(--borda);}
+  .header-content{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+  .logo-vacinas{display:flex;align-items:center;gap:12px;color:var(--azul);}
+  .logo-vacinas svg{width:40px;height:44px;}
+  .logo-text{font-family:'Manrope',sans-serif;font-size:22px;font-weight:700;letter-spacing:0.18em;color:var(--azul);}
+  nav ul{display:flex;gap:36px;list-style:none;}
+  nav a{font-weight:500;color:var(--texto);transition:color 0.2s;font-size:15px;}
+  nav a:hover{color:var(--azul);}
+  .btn-header{background:var(--verde);color:var(--branco);padding:12px 24px;border-radius:999px;font-weight:600;font-size:14px;transition:all 0.2s;}
+  .btn-header:hover{background:var(--verde-escuro);transform:translateY(-2px);box-shadow:var(--sombra-md);}
+  .menu-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--azul);}
+
+  .hero{padding:80px 0 100px;background:linear-gradient(135deg,#15296b 0%,#1e3a8a 100%);color:var(--branco);position:relative;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;}
+  .hero-text h1{font-size:clamp(2.4rem,4.8vw,3.8rem);margin-bottom:24px;color:var(--branco);}
+  .hero-text h1 em{color:#93b3ff;font-style:italic;font-weight:400;font-family:'Fraunces',serif;}
+  .hero-text>p{font-size:1.05rem;color:rgba(255,255,255,0.85);margin-bottom:36px;max-width:540px;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary,.btn-secondary{border:none;padding:16px 30px;border-radius:999px;font-weight:600;font-size:15px;cursor:pointer;transition:all 0.2s;font-family:inherit;display:inline-flex;align-items:center;gap:8px;}
+  .btn-primary{background:var(--verde);color:var(--branco);}
+  .btn-primary:hover{background:var(--verde-escuro);transform:translateY(-2px);box-shadow:0 8px 20px rgba(46,147,103,0.4);}
+  .btn-secondary{background:rgba(255,255,255,0.12);color:var(--branco);border:1px solid rgba(255,255,255,0.3);}
+  .btn-secondary:hover{background:rgba(255,255,255,0.2);transform:translateY(-2px);}
+  .hero-visual{position:relative;height:460px;}
+  .hero-card{position:absolute;background:var(--branco);border-radius:18px;padding:22px;box-shadow:var(--sombra-lg);width:270px;color:var(--texto);transition:transform 0.3s;}
+  .hero-card:hover{transform:translateY(-6px);}
+  .hero-card-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:14px;}
+  .hero-card p{font-size:14px;color:var(--texto-claro);}
+  .hero-card-1{top:0;left:60px;transform:rotate(-3deg);}
+  .hero-card-2{top:150px;right:0;transform:rotate(2deg);z-index:2;}
+  .hero-card-3{top:290px;left:50px;transform:rotate(-1deg);}
+
+  section{padding:90px 0;}
+  .section-header{text-align:center;max-width:720px;margin:0 auto 56px;}
+  .section-eyebrow{display:inline-block;color:var(--azul);font-weight:700;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;}
+  .section-header h2{font-size:clamp(2rem,3.5vw,2.8rem);margin-bottom:18px;}
+  .section-header p{color:var(--texto-claro);font-size:1.02rem;}
+  .section-header a{color:var(--azul);font-weight:600;}
+
+  .atendimento{background:var(--branco);}
+  .atendimento-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .atendimento-card{border-radius:22px;padding:46px 42px;color:var(--branco);position:relative;overflow:hidden;transition:all 0.3s;min-height:310px;}
+  .atendimento-card.azul{background:linear-gradient(135deg,#1e3a8a 0%,#15296b 100%);}
+  .atendimento-card.verde{background:linear-gradient(135deg,#2e9367 0%,#1f7350 100%);}
+  .atendimento-card::after{content:'';position:absolute;bottom:-80px;right:-80px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,0.06);}
+  .atendimento-card:hover{transform:translateY(-6px);box-shadow:var(--sombra-lg);}
+  .atendimento-icon{width:52px;height:52px;background:rgba(255,255,255,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:24px;position:relative;z-index:1;}
+  .atendimento-card h3{font-size:1.7rem;margin-bottom:14px;color:var(--branco);position:relative;z-index:1;}
+  .atendimento-card p{color:rgba(255,255,255,0.88);margin-bottom:28px;max-width:460px;position:relative;z-index:1;}
+  .atendimento-link{color:var(--branco);font-weight:600;display:inline-flex;align-items:center;gap:6px;border-bottom:1px solid rgba(255,255,255,0.4);padding-bottom:4px;transition:gap 0.2s;position:relative;z-index:1;}
+  .atendimento-link:hover{gap:12px;}
+
+  .catalogo{background:var(--azul-bg-suave);}
+  .filtros-idade{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:1080px;margin:0 auto 56px;}
+  .filtro-idade{background:var(--branco);border:1.5px solid var(--borda);border-radius:16px;padding:22px 12px;cursor:pointer;transition:all 0.2s;text-align:center;font-family:inherit;}
+  .filtro-idade:hover{border-color:var(--azul-claro);transform:translateY(-3px);box-shadow:var(--sombra-md);}
+  .filtro-idade.ativo{background:var(--azul);border-color:var(--azul);color:var(--branco);}
+  .filtro-emoji{font-size:32px;display:block;margin-bottom:8px;}
+  .filtro-label{font-weight:700;font-size:14px;display:block;margin-bottom:2px;}
+  .filtro-faixa{font-size:12px;color:var(--texto-claro);font-weight:500;}
+  .filtro-idade.ativo .filtro-faixa{color:rgba(255,255,255,0.85);}
+  .vacinas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:24px;}
+  .vacina-card{background:var(--branco);border:1px solid var(--borda);border-radius:16px;padding:26px;transition:all 0.3s;display:flex;flex-direction:column;}
+  .vacina-card:hover{border-color:var(--azul-claro);transform:translateY(-4px);box-shadow:var(--sombra-md);}
+  .vacina-tag{display:inline-block;font-size:11px;font-weight:600;padding:5px 12px;border-radius:999px;margin-bottom:16px;width:fit-content;}
+  .vacina-tag.azul{background:#d4e3fb;color:#1e3a8a;}
+  .vacina-tag.roxo{background:#ede4fb;color:#6b3fb5;}
+  .vacina-tag.rosa{background:#fcdde6;color:#b53f6b;}
+  .vacina-tag.laranja{background:#fde6cf;color:#b56b1e;}
+  .vacina-tag.verde{background:#d4ecdb;color:#1f7350;}
+  .vacina-card h3{font-family:'Manrope',sans-serif;font-weight:700;font-size:1.2rem;margin-bottom:10px;letter-spacing:-0.01em;}
+  .vacina-card p{color:var(--texto-claro);font-size:14px;margin-bottom:20px;flex:1;}
+  .vacina-info{display:flex;gap:16px;padding-top:16px;border-top:1px dashed var(--borda);margin-bottom:16px;font-size:13px;color:var(--texto-claro);}
+  .vacina-info span{display:inline-flex;align-items:center;gap:5px;}
+  .vacina-btn{background:var(--azul);color:var(--branco);border:none;padding:12px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;}
+  .vacina-btn:hover{background:var(--azul-escuro);}
+
+  .lista-completa{background:var(--branco);}
+  .lista-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:40px;}
+  .lista-coluna{background:var(--azul-bg-suave);border-radius:18px;padding:28px;}
+  .lista-titulo{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1.5px solid var(--branco);}
+  .lista-emoji{font-size:26px;}
+  .lista-titulo h3{font-family:'Manrope',sans-serif;color:var(--azul);font-size:1.1rem;font-weight:700;}
+  .lista-vacinas{list-style:none;}
+  .lista-vacinas li{padding:7px 0;font-size:14px;color:var(--texto);position:relative;padding-left:22px;}
+  .lista-vacinas li::before{content:"💉";font-size:12px;position:absolute;left:0;top:7px;}
+  .lista-marcas{background:var(--azul-bg);border-radius:18px;padding:32px;text-align:center;max-width:900px;margin:0 auto;}
+  .lista-marcas p{color:var(--texto);margin-bottom:20px;font-size:15px;}
+  .lista-marcas strong{color:var(--azul);font-weight:700;}
+
+  .como-funciona{background:var(--azul-bg-suave);}
+  .passos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:1000px;margin:0 auto;}
+  .passo-card{text-align:center;padding:0 12px;}
+  .passo-num{width:64px;height:64px;background:var(--branco);border:2.5px solid var(--azul);color:var(--azul);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 auto 20px;}
+  .passo-card h4{font-family:'Manrope',sans-serif;font-weight:700;font-size:1.2rem;margin-bottom:12px;}
+  .passo-card p{color:var(--texto-claro);font-size:14.5px;line-height:1.6;}
+
+  .faq{background:var(--branco);}
+  .faq-grid{max-width:820px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--borda);}
+  .faq-q{width:100%;background:none;border:none;text-align:left;font-family:'Manrope',sans-serif;font-size:1.05rem;font-weight:600;color:var(--texto);cursor:pointer;padding:24px 0;display:flex;justify-content:space-between;align-items:center;gap:18px;}
+  .faq-q::after{content:"+";color:var(--azul);font-size:24px;transition:transform 0.3s;flex-shrink:0;font-weight:300;}
+  .faq-item.aberto .faq-q::after{transform:rotate(45deg);}
+  .faq-a{color:var(--texto-claro);max-height:0;overflow:hidden;transition:all 0.3s;padding:0;}
+  .faq-item.aberto .faq-a{padding-bottom:24px;max-height:400px;}
+
+  .cta-final{background:linear-gradient(135deg,var(--azul) 0%,var(--azul-escuro) 100%);color:var(--branco);text-align:center;}
+  .cta-final h2{color:var(--branco);font-size:clamp(2rem,3.5vw,2.6rem);margin-bottom:18px;}
+  .cta-final p{color:rgba(255,255,255,0.9);font-size:1.08rem;margin-bottom:36px;max-width:600px;margin-left:auto;margin-right:auto;}
+  .cta-final .btn-primary{font-size:16px;padding:18px 36px;}
+
+  footer{background:#0e1e4d;color:rgba(255,255,255,0.78);padding:64px 0 24px;font-size:14px;}
+  .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+  footer h4{color:var(--branco);margin-bottom:18px;font-size:0.95rem;font-family:'Manrope',sans-serif;font-weight:700;}
+  footer ul{list-style:none;}
+  footer li{margin-bottom:10px;}
+  footer a{transition:opacity 0.2s;opacity:0.85;}
+  footer a:hover{opacity:1;color:var(--branco);}
+  .footer-logo{display:flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--branco);}
+  .footer-logo svg{width:34px;height:38px;}
+  .footer-logo-text{font-family:'Manrope',sans-serif;font-weight:700;font-size:18px;letter-spacing:0.18em;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.12);padding-top:24px;text-align:center;font-size:13px;opacity:0.7;}
+  .footer-rt{background:rgba(255,255,255,0.05);padding:16px 20px;border-radius:12px;margin-top:18px;font-size:13px;line-height:1.6;}
+  .footer-rt strong{color:var(--branco);display:block;margin-bottom:4px;}
+
+  .whatsapp-float{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:var(--verde);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(46,147,103,0.4);z-index:99;transition:transform 0.2s,box-shadow 0.2s;color:var(--branco);font-size:24px;}
+  .whatsapp-float:hover{transform:scale(1.08);box-shadow:0 12px 28px rgba(46,147,103,0.5);}
+
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{height:420px;margin:0 auto;max-width:500px;}
+    .atendimento-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    nav ul{display:none;}
+    .menu-toggle{display:block;}
+    .topbar-info{font-size:12px;gap:14px;}
+    .filtros-idade{grid-template-columns:repeat(3,1fr);}
+    .passos-grid{grid-template-columns:1fr;gap:32px;}
+    .lista-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:600px){
+    .hero{padding:56px 0 70px;}
+    section{padding:64px 0;}
+    .footer-grid{grid-template-columns:1fr;}
+    .hero-cta{flex-direction:column;}
+    .hero-cta button{width:100%;justify-content:center;}
+    .hero-card{width:240px;}
+    .hero-card-1{left:0;}
+    .hero-card-3{left:40px;}
+    .filtros-idade{grid-template-columns:repeat(2,1fr);}
+    .lista-grid{grid-template-columns:1fr;}
+    .atendimento-card{padding:36px 28px;min-height:auto;}
+    .topbar{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container topbar-content">
+    <div class="topbar-info">
+      <span>📍 Rua Machado de Assis, 125 - Centro, Uberlândia/MG</span>
+      <a href="tel:03432393600">📞 (34) 3239-3600</a>
+    </div>
+    <div><a href="https://www.labormed.net.br">← Voltar para Labormed.net.br</a></div>
+  </div>
+</div>
+
+<header>
+  <div class="container header-content">
+    <a href="#" class="logo-vacinas">
+      <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" aria-label="Labormed Vacinas">
+        <path d="M100 10 C 100 10, 50 60, 50 112 C 50 138, 72 158, 100 158 C 128 158, 150 138, 150 112 C 150 60, 100 10, 100 10 Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/>
+        <path d="M78 76 Q 70 110, 82 138" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/>
+        <ellipse cx="100" cy="170" rx="62" ry="11" fill="none" stroke="currentColor" stroke-width="5.5"/>
+        <path d="M20 192 Q 100 172, 180 192" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+        <path d="M4 214 Q 100 192, 196 214" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">VACINAS</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#vacinas">Vacinas</a></li>
+        <li><a href="#lista-completa">Lista completa</a></li>
+        <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#faq">Dúvidas</a></li>
+      </ul>
+    </nav>
+    <a href="#agendar" class="btn-header">Agendar agora →</a>
+    <button class="menu-toggle" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <h1>Proteja quem você ama com <em>tranquilidade</em> e qualidade Labormed.</h1>
+      <p>Calendário vacinal completo para todas as idades. Aplicação na clínica ou no conforto da sua casa, com a confiança de quem cuida da saúde da sua família.</p>
+      <div class="hero-cta">
+        <button class="btn-primary" onclick="document.getElementById('vacinas').scrollIntoView({behavior:'smooth'})">Ver vacinas disponíveis →</button>
+        <button class="btn-secondary" onclick="abrirWhatsApp('Olá! Gostaria de saber mais sobre as vacinas disponíveis na Labormed.')">💬 Falar no WhatsApp</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card hero-card-1">
+        <div class="hero-card-icon" style="background:#fff3e0;">👶</div>
+        <p>Calendário completo para bebês e crianças, com diferenciais para reduzir o desconforto.</p>
+      </div>
+      <div class="hero-card hero-card-2">
+        <div class="hero-card-icon" style="background:#e0f2fe;">🏠</div>
+        <p>Vacinação em casa: nossa equipe vai até você. Hora marcada e praticidade para sua família.</p>
+      </div>
+      <div class="hero-card hero-card-3">
+        <div class="hero-card-icon" style="background:#f3e8ff;">👵</div>
+        <p>Vacinas específicas para 60+, com dose alta e atendimento humanizado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="atendimento">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Como você prefere</div>
+      <h2>Vacine na clínica ou no conforto da sua casa</h2>
+      <p>Você escolhe a forma mais prática para você e sua família. Nossa equipe especializada garante segurança e cuidado em qualquer cenário.</p>
+    </div>
+    <div class="atendimento-grid">
+      <div class="atendimento-card azul">
+        <div class="atendimento-icon">🏥</div>
+        <h3>Na clínica</h3>
+        <p>Ambiente preparado, equipe especializada e toda a estrutura do Labormed. Agendamento rápido pelo WhatsApp ou aqui no site.</p>
+        <a href="#agendar" class="atendimento-link" onclick="abrirWhatsApp('Olá! Gostaria de agendar uma vacina na clínica.'); return false;">Agendar na clínica →</a>
+      </div>
+      <div class="atendimento-card verde">
+        <div class="atendimento-icon">🏠</div>
+        <h3>Vacinação em casa</h3>
+        <p>Levamos toda a estrutura até você, com hora marcada e total segurança. Consulte disponibilidade na sua região de Uberlândia.</p>
+        <a href="#agendar" class="atendimento-link" onclick="abrirWhatsApp('Olá! Gostaria de informações sobre vacinação domiciliar.'); return false;">Solicitar atendimento domiciliar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="catalogo" id="vacinas">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Vacinas em destaque</div>
+      <h2>Vacinas para cada momento da vida</h2>
+      <p>Trabalhamos com as principais vacinas do mercado, com cadeia fria certificada e profissionais capacitados para aplicação. Veja abaixo nossos destaques ou <a href="#lista-completa">consulte a lista completa</a>.</p>
+    </div>
+    <div class="filtros-idade">
+      <button class="filtro-idade ativo" data-faixa="todos"><span class="filtro-emoji">💉</span><span class="filtro-label">Todas</span><span class="filtro-faixa">vacinas</span></button>
+      <button class="filtro-idade" data-faixa="criancas"><span class="filtro-emoji">👶</span><span class="filtro-label">Crianças</span><span class="filtro-faixa">0 a 12 anos</span></button>
+      <button class="filtro-idade" data-faixa="adultos"><span class="filtro-emoji">🧑</span><span class="filtro-label">Adultos</span><span class="filtro-faixa">19 a 59 anos</span></button>
+      <button class="filtro-idade" data-faixa="idosos"><span class="filtro-emoji">👵</span><span class="filtro-label">Idosos</span><span class="filtro-faixa">60 anos +</span></button>
+      <button class="filtro-idade" data-faixa="gestantes"><span class="filtro-emoji">🤰</span><span class="filtro-label">Gestantes</span><span class="filtro-faixa">Pré-natal</span></button>
+    </div>
+    <div class="vacinas-grid">
+
+      <div class="vacina-card" data-faixas="criancas,adultos,idosos,gestantes">
+        <span class="vacina-tag azul">Todas as idades</span>
+        <h3>Influenza Quadrivalente</h3>
+        <p>Proteção contra 4 cepas do vírus da gripe (Influenza A e B). Recomendada anualmente para todos a partir dos 6 meses.</p>
+        <div class="vacina-info"><span>💉 Dose anual</span><span>🎯 6 meses+</span></div>
+        <button class="vacina-btn" onclick="consultarVacina('Influenza Quadrivalente')">💬 Saber mais e agendar</button>
+      </div>
+
+      <div class="vacina-card" data-faixas="idosos">
+        <span class="vacina-tag roxo">Idosos 60+</span>
+        <h3>Influenza Alta Dose (HD4V)</h3>
+        <p>Vacina quadrivalente em alta concentração, preferencial a partir dos 60 anos. Maior resposta imunológica para idosos.</p>
+        <div class="vacina-info"><span>💉 Dose anual</span><span>🎯 60 anos+</span></div>
+        <button class="vacina-btn" onclick="consultarVacina('Influenza Alta Dose (HD4V)')">💬 Saber mais e agendar</button>
+      </div>
+
+      <div class="vacina-card" data-faixas="adultos,idosos">
+        <span class="vacina-tag rosa">Adultos 50+</span>
+        <h3>Herpes Zóster Recombinante</h3>
+        <p>Previne o herpes zóster (cobreiro) e a neuralgia pós-herpética. Recomendada mesmo para quem já teve a doença.</p>
+        <div class="vacina-info"><span>💉 2 doses</span><span>🎯 50 anos+</span></div>
+        <button class="vacina-btn" onclick="consultarVacina('Herpes Zóster Recombinante')">💬 Saber mais e agendar</button>
+      </div>
+
+      <div class="vacina-card" data-faixas="criancas,adultos">
+        <span class="vacina-tag verde">9 a 45 anos</span>
+        <h3>HPV 9-valente</h3>
+        <p>Protege contra 9 tipos do HPV, prevenindo verrugas genitais e cânceres relacionados (colo do útero, cabeça, pescoço, ânus).</p>
+        <div class="vacina-info"><span>💉 2 a 3 doses</span><span>🎯 9 a 45 anos</span></div>
+        <button class="vacina-btn" onclick="consultarVacina('HPV 9-valente')">💬 Saber mais e agendar</button>
+      </div>
+
+      <div class="vacina-card" data-faixas="criancas">
+        <span class="vacina-tag laranja">Bebês</span>
+        <h3>Hexavalente Acelular</h3>
+        <p>Proteção combinada em uma única aplicação: difteria, tétano, coqueluche acelular, poliomielite, hepatite B e Hib.</p>
+        <div class="vacina-info"><span>💉 3 doses + reforços</span><span>🎯 2 meses+</span></div>
+        <button class="vacina-btn" onclick="consultarVacina('Hexavalente Acelular')">💬 Saber mais e agendar</button>
+      </div>
+
+      <div class="vacina-card" data-faixas="criancas">
+        <span class="vacina-tag laranja">Bebês</span>
+        <h3>Rotavírus Pentavalente</h3>
+        <p>Previne a gastroenterite causada pelo rotavírus, principal causa de diarreia grave em bebês. Aplicação oral, indicada a partir de 6 semanas de vida.</p>
+        <div class="vacina-info"><span>💉 Esquema oral</span><span>🎯 A partir de 6 sem</span></div>
+        <button class="vacina-btn" onclick="consultarVacina('Rotavírus Pentavalente')">💬 Saber mais e agendar</button>
+      </div>
+
+      <div class="vacina-card" data-faixas="criancas">
+        <span class="vacina-tag laranja">Bebês</span>
+        <h3>Pneumocócica 13-valente</h3>
+        <p>Protege contra 13 sorotipos do pneumococo, responsáveis por pneumonia, otite média e meningite em bebês e crianças.</p>
+        <div class="vacina-info"><span>💉 3 doses + reforço</span><span>🎯 2 meses+</span></div>
+        <button class="vacina-btn" onclick="consultarVacina('Pneumocócica 13-valente')">💬 Saber mais e agendar</button>
+      </div>
+
+      <div class="vacina-card" data-faixas="criancas">
+        <span class="vacina-tag laranja">Bebês</span>
+        <h3>Pneumocócica 15-valente</h3>
+        <p>Versão ampliada da pneumocócica conjugada, com proteção contra 15 sorotipos do pneumococo.</p>
+        <div class="vacina-info"><span>💉 3 doses + reforço</span><span>🎯 2 meses+</span></div>
+        <button class="vacina-btn" onclick="consultarVacina('Pneumocócica 15-valente')">💬 Saber mais e agendar</button>
+      </div>
+
+      <div class="vacina-card" data-faixas="criancas,adultos,idosos">
+        <span class="vacina-tag azul">Todas as idades</span>
+        <h3>Pneumocócica 20-valente</h3>
+        <p>A mais recente da família das pneumocócicas, com proteção contra 20 sorotipos. Indicada a partir de 2 meses de vida, sem limite máximo de idade.</p>
+        <div class="vacina-info"><span>💉 Esquema conforme idade</span><span>🎯 2 meses+</span></div>
+        <button class="vacina-btn" onclick="consultarVacina('Pneumocócica 20-valente')">💬 Saber mais e agendar</button>
+      </div>
+
+      <div class="vacina-card" data-faixas="gestantes">
+        <span class="vacina-tag rosa">Gestantes</span>
+        <h3>dTpa Adulto</h3>
+        <p>Tríplice bacteriana acelular: difteria, tétano e coqueluche. Recomendada em todas as gestações para proteger o bebê nos primeiros meses de vida.</p>
+        <div class="vacina-info"><span>💉 1 dose por gestação</span><span>🎯 A partir de 20 sem</span></div>
+        <button class="vacina-btn" onclick="consultarVacina('dTpa Adulto')">💬 Saber mais e agendar</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="lista-completa" id="lista-completa">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Catálogo completo</div>
+      <h2>Todas as vacinas disponíveis na Labormed</h2>
+      <p>Mais de 40 imunizantes aprovados pela Anvisa, organizados por faixa etária. Consulte disponibilidade e valores pelo WhatsApp.</p>
+    </div>
+    <div class="lista-grid">
+      <div class="lista-coluna">
+        <div class="lista-titulo"><span class="lista-emoji">👶</span><h3>Bebês e Crianças</h3></div>
+        <ul class="lista-vacinas">
+          <li>BCG</li><li>Hepatite A</li><li>Hepatite B</li>
+          <li>Hexavalente Acelular</li><li>Pentavalente Acelular</li>
+          <li>Pneumocócica VPC13 / VPC15</li><li>Pneumocócica VPC20</li>
+          <li>Rotavírus Pentavalente</li><li>Meningocócica B</li>
+          <li>Meningocócica ACWY</li><li>Meningocócica C</li>
+          <li>Influenza Quadrivalente</li><li>Tríplice Viral (SCR)</li>
+          <li>Tetra Viral (SCRV)</li><li>Varicela</li><li>Febre Amarela</li>
+          <li>Hepatite A + B (combinada)</li><li>HPV 9-valente</li><li>Dengue (Qdenga)</li>
+        </ul>
+      </div>
+      <div class="lista-coluna">
+        <div class="lista-titulo"><span class="lista-emoji">🧑</span><h3>Adultos</h3></div>
+        <ul class="lista-vacinas">
+          <li>Influenza Quadrivalente</li><li>HPV 9-valente</li>
+          <li>Hepatite A</li><li>Hepatite B</li><li>Hepatite A + B (combinada)</li>
+          <li>dTpa (Tríplice acelular adulto)</li><li>dT (Dupla adulto)</li>
+          <li>Tríplice Viral (SCR)</li><li>Varicela</li><li>Febre Amarela</li>
+          <li>Meningocócica ACWY</li><li>Meningocócica B</li>
+          <li>Pneumocócica VPC20</li><li>Dengue (Qdenga)</li>
+          <li>Raiva</li><li>Febre Tifoide</li>
+        </ul>
+      </div>
+      <div class="lista-coluna">
+        <div class="lista-titulo"><span class="lista-emoji">👵</span><h3>Idosos 60+</h3></div>
+        <ul class="lista-vacinas">
+          <li>Influenza Alta Dose (HD4V)</li><li>Pneumocócica VPC20</li>
+          <li>Pneumocócica VPC15 / VPP23</li><li>Herpes Zóster Recombinante</li>
+          <li>dTpa (Tríplice acelular adulto)</li>
+          <li>Hepatite A</li><li>Hepatite B</li>
+          <li>VSR — Arexvy</li><li>VSR — Abrysvo</li>
+          <li>Meningocócica ACWY</li><li>Febre Amarela</li><li>Dengue (Qdenga)</li>
+        </ul>
+      </div>
+      <div class="lista-coluna">
+        <div class="lista-titulo"><span class="lista-emoji">🤰</span><h3>Gestantes</h3></div>
+        <ul class="lista-vacinas">
+          <li>dTpa (Tríplice acelular)</li><li>Influenza Quadrivalente</li>
+          <li>Hepatite B</li><li>Hepatite A</li><li>VSR — Abrysvo</li>
+          <li>Covid-19</li><li>Pneumocócicas (se indicado)</li>
+          <li>Meningocócicas (se indicado)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="lista-marcas">
+      <p>Trabalhamos com as principais marcas e laboratórios: <strong>GSK, Pfizer, Sanofi, MSD, Takeda</strong> e outros.</p>
+      <button class="btn-primary" onclick="abrirWhatsApp('Olá! Vi a lista de vacinas no site e gostaria de consultar a *disponibilidade* e o *valor* de uma vacina específica. Pode me ajudar?')">💬 Consultar disponibilidade e valores</button>
+    </div>
+  </div>
+</section>
+
+<section class="como-funciona" id="como-funciona">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Simples e prático</div>
+      <h2>Como agendar sua vacina</h2>
+      <p>Em poucos minutos você garante a proteção da sua família com toda a comodidade.</p>
+    </div>
+    <div class="passos-grid">
+      <div class="passo-card"><div class="passo-num">1</div><h4>Fale com a gente</h4><p>Clique em "Agendar" e converse com nossa equipe diretamente pelo WhatsApp.</p></div>
+      <div class="passo-card"><div class="passo-num">2</div><h4>Combine os detalhes</h4><p>Nossa equipe orienta sobre a vacina, indica se é melhor na clínica ou em casa e marca o melhor horário.</p></div>
+      <div class="passo-card"><div class="passo-num">3</div><h4>Vacine-se</h4><p>Receba a aplicação com toda a segurança e qualidade Labormed, no dia e hora combinados.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Dúvidas frequentes</div>
+      <h2>Perguntas mais comuns sobre vacinação</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item"><button class="faq-q">Preciso de receita médica para tomar vacinas particulares?</button><div class="faq-a"><p>Não é obrigatório receita médica para a maioria das vacinas, mas algumas situações específicas (esquemas de recuperação, imunossuprimidos ou viajantes) podem exigir indicação médica. Nossa enfermeira responsável orienta cada caso individualmente.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Como funciona a aplicação domiciliar?</button><div class="faq-a"><p>Levamos toda a estrutura de vacinação até a sua casa, com cadeia fria certificada e aplicação feita por enfermeiro habilitado. Você agenda pelo WhatsApp, combinamos data, horário e endereço. Atendemos toda Uberlândia — consulte a taxa de deslocamento conforme a região.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Posso parcelar o pagamento?</button><div class="faq-a"><p>Sim, aceitamos diversas formas de pagamento, incluindo parcelamento no cartão. Consulte as condições com nossa equipe pelo WhatsApp.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Vocês atendem planos de saúde?</button><div class="faq-a"><p>A vacinação na Labormed é particular. Algumas operadoras de saúde possuem programas de reembolso para vacinas — verifique diretamente com seu plano. Emitimos nota fiscal para todos os atendimentos.</p></div></div>
+      <div class="faq-item"><button class="faq-q">As vacinas são seguras?</button><div class="faq-a"><p>Sim. Trabalhamos apenas com imunizantes aprovados pela Anvisa, dos principais laboratórios do mundo (GSK, Pfizer, Sanofi, MSD, Takeda), com cadeia fria certificada do fabricante até a aplicação. Toda aplicação é feita por enfermeiro habilitado, com observação pós-vacinal.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Qual a diferença entre a vacina particular e a do SUS?</button><div class="faq-a"><p>O SUS oferece o calendário básico gratuito. Na rede particular, você tem acesso a vacinas mais modernas (como a Hexavalente Acelular e a Pneumo 20), mais conforto (sem fila, horário marcado) e a opção de atendimento domiciliar.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final" id="agendar">
+  <div class="container">
+    <h2>Cuidar da saúde começa com uma conversa</h2>
+    <p>Nossa equipe está pronta para tirar suas dúvidas, indicar as vacinas certas e agendar seu atendimento. É rápido pelo WhatsApp.</p>
+    <button class="btn-primary" onclick="abrirWhatsApp('Olá! Gostaria de agendar um atendimento de vacinação.')">💬 Falar com a Labormed Vacinas</button>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 10 C 100 10, 50 60, 50 112 C 50 138, 72 158, 100 158 C 128 158, 150 138, 150 112 C 150 60, 100 10, 100 10 Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/>
+            <path d="M78 76 Q 70 110, 82 138" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/>
+            <ellipse cx="100" cy="170" rx="62" ry="11" fill="none" stroke="currentColor" stroke-width="5.5"/>
+            <path d="M20 192 Q 100 172, 180 192" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+            <path d="M4 214 Q 100 192, 196 214" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+          </svg>
+          <span class="footer-logo-text">VACINAS</span>
+        </div>
+        <p style="opacity:0.85;line-height:1.6;">Vacinação particular em Uberlândia. Atendimento na clínica ou domiciliar, com toda a confiança Labormed.</p>
+        <div class="footer-rt">
+          <strong>Responsável Técnica</strong>
+          Barbara Cristina Rabelo<br>
+          COREN-MG 431464
+        </div>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li>📍 Rua Machado de Assis, 125</li>
+          <li>Centro - Uberlândia/MG</li>
+          <li><a href="tel:03432393600">📞 (34) 3239-3600</a></li>
+          <li><a href="https://wa.me/553432393600">💬 WhatsApp</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Atendimento</h4>
+        <ul>
+          <li>Segunda a Sexta</li>
+          <li>07h às 18h</li>
+          <li>Sábado: 07h às 12h</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="https://www.labormed.net.br">Site principal Labormed</a></li>
+          <li><a href="https://www.instagram.com/labormedlab">Instagram</a></li>
+          <li><a href="#">Política de Privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Labormed Vacinas. Todos os direitos reservados. | Vacinação particular regulamentada pela Anvisa.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="whatsapp-float" onclick="abrirWhatsApp('Olá! Gostaria de informações sobre vacinas.'); return false;" aria-label="Falar no WhatsApp">💬</a>
+
+<script>
+  function abrirWhatsApp(mensagem){
+    const numero='553432393600';
+    window.open('https://wa.me/'+numero+'?text='+encodeURIComponent(mensagem),'_blank');
+  }
+  function consultarVacina(nome){
+    abrirWhatsApp('Olá! Gostaria de consultar disponibilidade e valor da vacina *'+nome+'*.');
+  }
+  const filtros=document.querySelectorAll('.filtro-idade');
+  const cards=document.querySelectorAll('.vacina-card');
+  filtros.forEach(filtro=>{
+    filtro.addEventListener('click',()=>{
+      filtros.forEach(f=>f.classList.remove('ativo'));
+      filtro.classList.add('ativo');
+      const faixa=filtro.dataset.faixa;
+      cards.forEach(card=>{
+        if(faixa==='todos'){card.style.display='flex';}
+        else{
+          const faixasCard=card.dataset.faixas.split(',');
+          card.style.display=faixasCard.includes(faixa)?'flex':'none';
+        }
+      });
+    });
+  });
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click',()=>{btn.parentElement.classList.toggle('aberto');});
+  });
+</script>
+
+</body>
+</html>
