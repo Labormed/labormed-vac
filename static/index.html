@@ -185,6 +185,53 @@
     .atendimento-card{padding:36px 28px;min-height:auto;}
     .topbar{display:none;}
   }
+/* ── Blog Labormed — botao flutuante de acesso rapido ─────────────
+   Mesmo bloco dos apps internos, com UMA diferenca: aqui o canto
+   inferior direito ja e do .whatsapp-float (56px, bottom 24px), que
+   e o caminho do PACIENTE e tem prioridade nesta pagina. Por isso o
+   blog sobe para bottom 92px, empilhado ACIMA do WhatsApp, sem cobrir
+   nada. z-index 98 = mesma camada dos flutuantes, logo abaixo do
+   WhatsApp (99). Prefixo lbm-blog- evita colisao de nome. */
+.lbm-blog-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 92px;
+  z-index: 98;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: #013E87;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  box-shadow: 0 4px 14px rgba(1, 62, 135, 0.26);
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+.lbm-blog-fab:hover,
+.lbm-blog-fab:focus-visible {
+  background: #002D5E;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 20px rgba(1, 62, 135, 0.36);
+  outline: none;
+}
+.lbm-blog-fab svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+/* Celular: vira botao redondo so com o icone, centralizado sobre o
+   circulo do WhatsApp (56px), para os dois ficarem alinhados. */
+@media (max-width: 768px) {
+  .lbm-blog-fab { padding: 0; width: 40px; height: 40px; justify-content: center; right: 32px; bottom: 90px; }
+  .lbm-blog-fab .lbm-blog-fab-txt { display: none; }
+}
+
+/* Ao imprimir a pagina, o botao nao sai no papel. */
+@media print { .lbm-blog-fab { display: none !important; } }
+
 </style>
 </head>
 <body>
@@ -559,6 +606,24 @@
     btn.addEventListener('click',()=>{btn.parentElement.classList.toggle('aberto');});
   });
 </script>
+
+<!-- Blog Labormed — botao flutuante. Empilhado ACIMA do WhatsApp: nesta
+     pagina publica o canto inferior direito e do paciente, e o blog e
+     comunicacao interna. Estilo em .lbm-blog-fab, no <style> do <head>. -->
+<a class="lbm-blog-fab"
+   href="https://sites.google.com/view/bloglabormed/p%C3%A1gina-inicial"
+   target="_blank"
+   rel="noopener noreferrer"
+   title="Blog Labormed — informativo dos colaboradores"
+   aria-label="Abrir o Blog Labormed em uma nova aba">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M4 5h11v14a2 2 0 0 0 2 2H5a1 1 0 0 1-1-1V5z"/>
+    <path d="M15 8h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2"/>
+    <path d="M7 8h5M7 11h5M7 14h5M7 17h3"/>
+  </svg>
+  <span class="lbm-blog-fab-txt">Blog Labormed</span>
+</a>
 
 </body>
 </html>

@@ -31,3 +31,7 @@ export default {
     return env.ASSETS.fetch(request);
   },
 } satisfies ExportedHandler<Env>;
+
+// 2026-07-26 — Blog Labormed: botao flutuante de acesso ao blog dos colaboradores
+// em static/index.html, empilhado acima do WhatsApp. Bump aqui so para garantir a
+// republicacao dos assets do front (mudanca so-de-tela nem sempre republica sozinha).
